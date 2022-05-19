@@ -1,0 +1,48 @@
+---
+title: "Testat Teil 2: Netzwerkerhebung"
+subtitle: "226305 Netzwerkanalyse (SS22-WS22/23)"
+author: "Theresa Moretti"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Testat Teil 2: Netzwerkerhebung 
+
+
+```{r Netzwerk einlesen, fig.height=6, fig.width=10, message=FALSE, warning=TRUE, paged.print=FALSE}
+library(igraph)
+
+# Edge- und Nodelist vorbereiten
+edge <- read.csv("https://raw.githubusercontent.com/tm120/edge/main/edge.csv", header=T, as.is=T, sep = ",")
+
+nodes <- read.csv("https://raw.githubusercontent.com/tm120/node/main/nodes.csv", header=T, as.is=T, sep = ",")
+
+edgematrix <-as.matrix(edge)
+
+#igraph Objekt erstellen
+VFB <- graph_from_data_frame(d=edgematrix, directed=T)
+VFB
+```
+
+# Netzwerkvisualisierung
+
+```{r Einfache Visualisierung des erstellten Objekt, fig.height=4, fig.width=6}
+
+
+plot(VFB,
+     asp=0, #Verhältnisse anpassen
+     layout=layout_nicely, #Layout wird passend gewählt
+     rescale=TRUE,
+     vertex.size=degree(VFB)*4, #Knoten wird je nach Degree Wert verschieden groß dargestellt
+     vertex.color="yellow", #Farbe der Knoten
+     vertex.color.frame="black", #Farbe des Rahmens der Knoten
+     edge.arrow.size=.2, #Größe anpassen
+     edge.color="black", #Farbe der Kanten
+     main ="Transfers zum VFB", #Titel wählen
+     sub= "Betrachtung vorheriger Vereine, Nationalitäten und Ablösesummen") #Untertitel wählen
+
+
+```
