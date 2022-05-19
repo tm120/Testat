@@ -1,8 +1,8 @@
-Codebuch
-Theresa Moretti
+##Codebuch
+##Theresa Moretti
 
 
-1) Edge Attribute
+#1) Edge Attribute
 
 from: aus welchem Verein kommt der Spieler oder die Rückennummer des Spielers (ID)
 
@@ -14,7 +14,7 @@ season: Jahreszahl des Transferfensters
 
 
 
-2) Node Attribute
+#2) Node Attribute
 
 id: Rückennummer des Spielers oder der Vereinsname
 
